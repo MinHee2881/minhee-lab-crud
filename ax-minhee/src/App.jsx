@@ -1,7 +1,8 @@
 import { atom, useAtom } from 'jotai';
 import { atomWithStorage } from 'jotai/utils';
 import styled from 'styled-components';
-import { BrowserRouter, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
+// BrowserRouter 대신 HashRouter를 가져옵니다.
+import { HashRouter as Router, Routes, Route, Link, useParams, useNavigate } from 'react-router-dom';
 
 const topicsAtom = atomWithStorage('topics_data', [
   { id: 1, title: 'html', body: 'html is ...' },
@@ -93,11 +94,11 @@ function MainContents() {
   );
 }
 
-// 최종 내보내기에서 BrowserRouter로 감싸기
+// 최종 내보내기
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <MainContents />
-    </BrowserRouter>
+    </Router>
   );
 }
